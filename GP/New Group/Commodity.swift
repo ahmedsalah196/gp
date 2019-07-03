@@ -20,9 +20,9 @@ class Commodity {
         "crudeoil": "Crude oil"
     ]
     let newsURLS = [
-        "corn": "https://newsapi.org/v2/everything?q=corn%20stocks&apiKey=e7ae60174c294d74a4ddf5868095f07b",
-        "gold": "https://newsapi.org/v2/everything?q=gold%20stocks&apiKey=e7ae60174c294d74a4ddf5868095f07b",
-        "crudeoil": " https://newsapi.org/v2/everything?q=oil%20stocks&apiKey=e7ae60174c294d74a4ddf5868095f07b"
+        "corn": "https://newsapi.org/v2/everything?q=corn%20commodity&apiKey=e7ae60174c294d74a4ddf5868095f07b",
+        "gold": "https://newsapi.org/v2/everything?q=gold%20commodity&apiKey=e7ae60174c294d74a4ddf5868095f07b",
+        "crudeoil": " https://newsapi.org/v2/everything?q=oil%20commodity&apiKey=e7ae60174c294d74a4ddf5868095f07b"
     ]
     var newsUrl: String {
         get{
