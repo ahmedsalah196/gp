@@ -12,9 +12,16 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
     let linedrawer = lineDrawer.sharedinstance
     var selectedIndex:Int = 0{
         didSet {
+            NSLog("here")
             let curchoice = curCommodity.technicalAnalysisTags[selectedIndex]
-            let drawData = curCommodity.technicalAnalysis[curchoice]?.getLast(20)
-            linedrawer.updateGraph(line:line, with: drawData!)
+            let currentData = curCommodity.technicalAnalysis[curchoice]!
+            if selectedIndex != 2{
+            linedrawer.updateGraph(line:line, with: currentData.dataArray, label: technicalIndicators[selectedIndex],color: UIColor.blue)
+//                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray], labels: [technicalIndicators[selectedIndex]], colors: [UIColor.blue])
+            }
+            else {
+                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray,currentData.extraArray!], labels: ["MACD","Signal"], colors: [.blue,.yellow])
+            }
         }
     }
     

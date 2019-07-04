@@ -55,4 +55,23 @@ class HistPrices: NSObject {
                 completion(result)
         }
     }
+    func getMACD(completion: @escaping (MACDData)->Void){
+        if let MACDUrl = URL(string: "https://shielded-ravine-75376.herokuapp.com/gold/macd"){
+        Alamofire.request(MACDUrl,method: .get)
+            .validate()
+            .responseData { (response) in
+                if let data = response.data {
+                do {
+                    let result = try JSONDecoder().decode(MACDData.self,from: data)
+                    completion(result)
+                }
+                catch let jsonerr{
+                    print(jsonerr)
+                }
+            }
+            }
+            
+        }
+        
+    }
 }

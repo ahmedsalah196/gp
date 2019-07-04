@@ -9,6 +9,7 @@ class Commodity {
             URLcreator()
         }
     }
+    var macdData: MACDData!
     let commoditiesImages = [
         "gold": #imageLiteral(resourceName: "gold"),
         "corn":#imageLiteral(resourceName: "corn"),
@@ -35,7 +36,7 @@ class Commodity {
     var prices = [String: Array<Double>] ()
     var pricesTags = ["daily","weekly"]
     var news:[News] = [News]()
-    var technicalAnalysis = [String: Array<Double>]()
+    var technicalAnalysis = [String:CommodityTechnicalIndicatores]()
     var technicalAnalysisTags = ["sma","ema","macd","rsi"]
     var predictedPrice: Int = 30
     var monteCarlo = [String:Any]()
@@ -77,13 +78,28 @@ class Commodity {
             let tag = technicalAnalysisTags[index]
             let urlString = commodityURL.concat(tag)
             group.enter()
-            datafetcher.fetchPrices(from: urlString, completion: { (result) in
-                ret[tag] = result
-                group.leave()
-            })
+            if index != 2 {
+                datafetcher.fetchPrices(from: urlString, completion: { (result) in
+                    ret[tag] = result
+                    group.leave()
+                })
+            }
+            else {
+                datafetcher.getMACD { (MACDData) in
+                    ret["macd"] = MACDData.macd
+                    ret["Signal"] = MACDData.signal
+                    group.leave()
+                }
+            }
         }
         group.notify(queue: DispatchQueue.main) {
-            self.technicalAnalysis = ret
+            self.technicalAnalysisTags.forEach { tag in
+                let ct = CommodityTechnicalIndicatores( values: ret[tag]!)
+                self.technicalAnalysis[tag] = ct
+                if tag == "macd" {
+                    self.technicalAnalysis[tag]!.extraData(values: ret["Signal"]!)
+                }
+            }
             completion()
         }
     }

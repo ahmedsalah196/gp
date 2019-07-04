@@ -38,7 +38,7 @@ class lineChartController: UIViewController {
         let curChoice = curCommodity.pricesTags[choice.selectedSegmentIndex]
         guard let prices = curCommodity.prices[curChoice] else {return}
         let dispData = prices.getLast(20)
-        linedrawer.updateGraph(line:line,with:dispData)
+        linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: UIColor.blue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

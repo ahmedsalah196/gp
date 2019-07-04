@@ -10,6 +10,8 @@
 		06721D56C9D724A01AE3B7D3 /* Pods_GPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 393CBB4A7395DA73CA713483 /* Pods_GPUITests.framework */; };
 		49E6B086EB9AD4DE53E22F9F /* Pods_GPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396F4A5AF55817038357BA36 /* Pods_GPTests.framework */; };
 		6F621C7C773A114161BFC193 /* Pods_GP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5D20F6045DAEFE5691B5CD /* Pods_GP.framework */; };
+		7E3FA0D022CD196700786E1E /* MACDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3FA0CF22CD196700786E1E /* MACDData.swift */; };
+		7E3FA0D222CE01A500786E1E /* CommodityTechnicalIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */; };
 		7E44670922A17B6600DBDEDF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44670822A17B6600DBDEDF /* SettingsViewController.swift */; };
 		7E44671522A1B2C200DBDEDF /* CommoditiesTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44671422A1B2C200DBDEDF /* CommoditiesTabBarController.swift */; };
 		7E559370229EFEBF00E1E1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E55936F229EFEBF00E1E1CB /* AppDelegate.swift */; };
@@ -31,7 +33,7 @@
 		7E8D44C622C44A4F00CE5603 /* MCSimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D44C522C44A4F00CE5603 /* MCSimulationViewController.swift */; };
 		7E8D44C822C44C0D00CE5603 /* LineFilledDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D44C722C44C0D00CE5603 /* LineFilledDrawer.swift */; };
 		7E8D44CA22C6660C00CE5603 /* AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D44C922C6660C00CE5603 /* AreaChart.swift */; };
-		7E9F63A522C2950D00E80CCA /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F63A422C2950D00E80CCA /* News.swift */; };
+		7E9F63A522C2950D00E80CCA /* JSONResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F63A422C2950D00E80CCA /* JSONResult.swift */; };
 		7E9F63A722C2965500E80CCA /* NewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F63A622C2965500E80CCA /* NewsFetcher.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		3B16841BEBCC5BDA8A7FE0EE /* Pods-GPUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPUITests/Pods-GPUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D08604D38D9AEE58DE9AB49 /* Pods-GP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GP/Pods-GP.debug.xcconfig"; sourceTree = "<group>"; };
 		6B5D20F6045DAEFE5691B5CD /* Pods_GP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3FA0CF22CD196700786E1E /* MACDData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACDData.swift; sourceTree = "<group>"; };
+		7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityTechnicalIndicators.swift; sourceTree = "<group>"; };
 		7E44670822A17B6600DBDEDF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7E44671422A1B2C200DBDEDF /* CommoditiesTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommoditiesTabBarController.swift; sourceTree = "<group>"; };
 		7E55936C229EFEBE00E1E1CB /* GP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +90,7 @@
 		7E8D44C522C44A4F00CE5603 /* MCSimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSimulationViewController.swift; sourceTree = "<group>"; };
 		7E8D44C722C44C0D00CE5603 /* LineFilledDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFilledDrawer.swift; sourceTree = "<group>"; };
 		7E8D44C922C6660C00CE5603 /* AreaChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChart.swift; sourceTree = "<group>"; };
-		7E9F63A422C2950D00E80CCA /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		7E9F63A422C2950D00E80CCA /* JSONResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResult.swift; sourceTree = "<group>"; };
 		7E9F63A622C2965500E80CCA /* NewsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFetcher.swift; sourceTree = "<group>"; };
 		D1056DA5194E1BEA439CA958 /* Pods-GPUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPUITests/Pods-GPUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D26075B7D37BF247794A0A96 /* Pods-GPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPTests/Pods-GPTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,10 +145,12 @@
 				7E5593A2229F001D00E1E1CB /* Commodity.swift */,
 				7E5593A7229F001E00E1E1CB /* HistPrices.swift */,
 				7E5593A3229F001D00E1E1CB /* lineDrawer.swift */,
-				7E9F63A422C2950D00E80CCA /* News.swift */,
+				7E9F63A422C2950D00E80CCA /* JSONResult.swift */,
 				7E9F63A622C2965500E80CCA /* NewsFetcher.swift */,
 				7E8D44C922C6660C00CE5603 /* AreaChart.swift */,
 				7E8D44C722C44C0D00CE5603 /* LineFilledDrawer.swift */,
+				7E3FA0CF22CD196700786E1E /* MACDData.swift */,
+				7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -468,11 +474,13 @@
 				7E559370229EFEBF00E1E1CB /* AppDelegate.swift in Sources */,
 				7E8D44BC22C2C0C700CE5603 /* NewsTableViewController.swift in Sources */,
 				7E5593AF229F001E00E1E1CB /* HistPrices.swift in Sources */,
-				7E9F63A522C2950D00E80CCA /* News.swift in Sources */,
+				7E9F63A522C2950D00E80CCA /* JSONResult.swift in Sources */,
 				7E8D44C622C44A4F00CE5603 /* MCSimulationViewController.swift in Sources */,
 				7E8D44C222C3DA0900CE5603 /* WebViewController.swift in Sources */,
+				7E3FA0D022CD196700786E1E /* MACDData.swift in Sources */,
 				7E8D44C822C44C0D00CE5603 /* LineFilledDrawer.swift in Sources */,
 				7E44670922A17B6600DBDEDF /* SettingsViewController.swift in Sources */,
+				7E3FA0D222CE01A500786E1E /* CommodityTechnicalIndicators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
