@@ -125,6 +125,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E3FA0D322CF73F300786E1E /* Drawing Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				7E5593A3229F001D00E1E1CB /* lineDrawer.swift */,
+				7E8D44C922C6660C00CE5603 /* AreaChart.swift */,
+				7E8D44C722C44C0D00CE5603 /* LineFilledDrawer.swift */,
+			);
+			path = "Drawing Supporting files";
+			sourceTree = "<group>";
+		};
+		7E3FA0D422CF741C00786E1E /* Data Fetching files */ = {
+			isa = PBXGroup;
+			children = (
+				7E5593A7229F001E00E1E1CB /* HistPrices.swift */,
+				7E9F63A422C2950D00E80CCA /* JSONResult.swift */,
+				7E9F63A622C2965500E80CCA /* NewsFetcher.swift */,
+			);
+			path = "Data Fetching files";
+			sourceTree = "<group>";
+		};
 		7E44671222A18F1200DBDEDF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,13 +162,9 @@
 		7E44671322A18F2C00DBDEDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E3FA0D322CF73F300786E1E /* Drawing Supporting files */,
+				7E3FA0D422CF741C00786E1E /* Data Fetching files */,
 				7E5593A2229F001D00E1E1CB /* Commodity.swift */,
-				7E5593A7229F001E00E1E1CB /* HistPrices.swift */,
-				7E5593A3229F001D00E1E1CB /* lineDrawer.swift */,
-				7E9F63A422C2950D00E80CCA /* JSONResult.swift */,
-				7E9F63A622C2965500E80CCA /* NewsFetcher.swift */,
-				7E8D44C922C6660C00CE5603 /* AreaChart.swift */,
-				7E8D44C722C44C0D00CE5603 /* LineFilledDrawer.swift */,
 				7E3FA0CF22CD196700786E1E /* MACDData.swift */,
 				7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */,
 			);

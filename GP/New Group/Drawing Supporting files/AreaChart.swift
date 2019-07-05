@@ -21,11 +21,11 @@ class AreaChart{
         var labels: [Double] = []
         var ylabels: [Double] = []
         serieData = Array(zip(xs, ys))
-        let step = (xs.last! - xs.first!)/5
-        let ystep = (ys.last! - ys.first!)/5
+        let step = (xs.max()! - xs.min()!)/5
+        let ystep = (ys.max()! - ys.min()!)/5
         for i in 0...5 {
-            labels.append(xs.first! + step * Double(i))
-            ylabels.append(ys.first! + ystep * Double(i))
+            labels.append(xs.min()! + step * Double(i))
+            ylabels.append(ys.min()! + ystep * Double(i))
         }
         let series = ChartSeries(data:serieData)
         series.area = true
@@ -37,6 +37,9 @@ class AreaChart{
         chart.yLabelsOnRightSide = true
 //        chart.gridColor = .gray
         // Add some padding above the x-axis
+        ylabels = (0..<ylabels.count).map({ (i) -> Double in
+            return Double(round(ylabels[i]*10000.0)/10000)
+        })
         chart.yLabels = ylabels
         
         chart.yLabelsFormatter = {(labelIndex: Int, labelValue: Double) -> String in

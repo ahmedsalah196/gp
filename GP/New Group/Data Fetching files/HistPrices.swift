@@ -39,13 +39,16 @@ class HistPrices: NSObject {
                 completion(predictedPrice)
         }
     }
-    func getMonteCarlo(tag: String, completion: @escaping ([String:Any]?)-> Void){
-        let urlString = apiURL + tag + "/sim"
+    func getMonteCarlo(_ days: Int,
+                       tag: String,
+                       completion: @escaping ([String:Any]?)-> Void){
+        
+        let urlString = apiURL + tag + "/sim?days=\(days)"
         guard let url = URL(string: urlString) else {
             completion(nil)
             return
         }
-        Alamofire.request(url)
+        Alamofire.request(url, method: .get)
         .validate()
             .responseJSON { (response) in
                 guard let result = response.result.value as? [String:Any] else {

@@ -135,8 +135,8 @@ class Commodity {
             }
         }
     }
-    func monteCarlo(completion: @escaping ([String:Any])->Void){
-        datafetcher.getMonteCarlo(tag: tag) {[weak self] (response) in
+    func monteCarlo(days: Int,completion: @escaping ([String:Any])->Void){
+        datafetcher.getMonteCarlo(days,tag: tag) {[weak self] (response) in
             if let response = response,
                 let self = self
             {
