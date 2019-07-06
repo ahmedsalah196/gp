@@ -20,7 +20,7 @@ class NewsTableViewCell: UITableViewCell {
                  description: String,
                  url img: String?){
         
-        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         newsImage.addSubview(activityIndicator)
         activityIndicator.frame = newsImage.bounds
         activityIndicator.startAnimating()

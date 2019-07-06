@@ -16,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let fetcher = HistPrices.sharedInstance
+        let tags = ["gold",
+                    "crudeoil",
+                    "corn"]
+        let urls = ["today": "https://shielded-ravine-75376.herokuapp.com/",
+                    "dailypred": "https://predapi.herokuapp.com/"
+        ]
+        let extensions = ["today","dailypred"]
+        let userdefaults = UserDefaults.standard
+        tags.forEach { (tag) in
+            extensions.forEach { (ext) in
+            let cururl = urls[ext]! + tag + "/" + ext
+                fetcher.getPrice(urlString:cururl) { (price) in
+                    userdefaults.set(Double(price.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), forKey: tag+ext)
+            }
+        }
+        }
+//        Thread.sleep(forTimeInterval: 10)
         return true
     }
 

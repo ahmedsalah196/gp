@@ -9,10 +9,10 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var btnName: UIButton!
     @IBOutlet weak var tblview: UITableView!
     @IBOutlet weak var line: LineChartView!
+    var activity: UIActivityIndicatorView?
     let linedrawer = lineDrawer.sharedinstance
     var selectedIndex:Int = 0{
         didSet {
-            NSLog("here")
             let curchoice = curCommodity.technicalAnalysisTags[selectedIndex]
             let currentData = curCommodity.technicalAnalysis[curchoice]!
             if selectedIndex != 2{
@@ -22,6 +22,8 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
             else {
                 linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray,currentData.extraArray!], labels: ["MACD","Signal"], colors: [.blue,.yellow])
             }
+            btnName.isEnabled = true
+            animateLineView(view: line)
         }
     }
     
@@ -41,11 +43,32 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         curCommodity = tabBarVC.curCommodity
         if curCommodity.technicalAnalysis.isEmpty {
+            btnName.isEnabled = false
+            animate(toggle: true)
+            showLoading()
             curCommodity.loopForTA {
-                self.selectedIndex = 0
+                self.hideLoading()
+                let x = self.selectedIndex
+                self.selectedIndex = x
             }
         }
         
+    }
+    
+    private func showLoading(){
+        activity = UIActivityIndicatorView(style: .gray)
+        activity?.frame = line.bounds
+        line.addSubview(activity!)
+        activity?.startAnimating()
+    }
+    private func hideLoading(){
+        activity?.removeFromSuperview()
+    }
+    
+    private func animateLineView(view : UIView){
+        UIView.transition(with: view, duration: 0.3, options: .transitionCrossDissolve , animations: {
+            view.isHidden = false
+        })
     }
     
     @IBAction func showHideTable(_ sender: Any) {

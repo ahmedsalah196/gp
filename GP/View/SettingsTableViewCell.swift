@@ -12,9 +12,11 @@ class SettingsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
-    func setCell(img: UIImage, name: String){
+    @IBOutlet weak var riseFall: UIImageView!
+    
+    func setCell(img: UIImage, name: String, rise: UIImage){
         icon.image = img
         self.name.text = name
-        
+        riseFall.image = rise
     }
 }

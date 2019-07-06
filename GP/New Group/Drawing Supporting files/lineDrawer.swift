@@ -18,7 +18,7 @@ class lineDrawer: NSObject {
         lineDataSet.setCircleColor(UIColor.blue)
         let data = LineChartData()
         data.addDataSet(lineDataSet)
-        lineDataSet.drawValuesEnabled = false
+        lineDataSet.drawValuesEnabled = true
         setupGraph(line: line,
                    label: label,
                    color: color,
@@ -34,7 +34,7 @@ class lineDrawer: NSObject {
             }
             let dataset = LineChartDataSet(values: entries, label: labels[i])
             dataset.colors = [colors[i]]
-            dataset.circleRadius = 2.0
+            dataset.circleRadius = 1.0
             dataset.setCircleColor(colors[i])
             dataset.drawValuesEnabled = false
             return dataset
@@ -50,12 +50,18 @@ class lineDrawer: NSObject {
                     label: String,
                     color: UIColor,
                     data: LineChartData ){
+        guard let _ = line.data else {
+            line.data = data
+            line.chartDescription?.text = label
+            line.backgroundColor = UIColor.clear
+            line.chartDescription?.textColor = UIColor.blue
+            line.xAxis.labelTextColor = UIColor.blue
+            line.gridBackgroundColor = UIColor.blue
+            line.animate(xAxisDuration: 2, yAxisDuration: 2)
+            return
+        }
         line.data = data
-        line.chartDescription?.text = label
-        line.backgroundColor = UIColor.clear
-        line.chartDescription?.textColor = UIColor.blue
-        line.xAxis.labelTextColor = UIColor.blue
-        line.gridBackgroundColor = UIColor.blue
+        line.notifyDataSetChanged()
         line.animate(xAxisDuration: 2, yAxisDuration: 2)
     }
     

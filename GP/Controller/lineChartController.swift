@@ -8,10 +8,19 @@ class lineChartController: UIViewController {
     
     var curCommodity: Commodity!
     let linedrawer = lineDrawer.sharedinstance
-    
+    var activity: UIActivityIndicatorView?
     override func viewDidLoad() {
         super.viewDidLoad()
         choice.addTarget(self, action: #selector(handlechangeEvent), for: UIControl.Event.valueChanged)
+    }
+    func showLoading(){
+        activity = UIActivityIndicatorView(style: .gray)
+        activity?.frame = view.bounds
+        view.addSubview(activity!)
+        activity?.startAnimating()
+    }
+    func hideLoading(){
+        activity?.removeFromSuperview()
     }
     override func viewWillAppear(_ animated: Bool) {
         refreshData()
@@ -23,14 +32,22 @@ class lineChartController: UIViewController {
         curCommodity = tabBarVC.curCommodity
         commodityTitle.text = curCommodity.getName()
         if curCommodity.prices.isEmpty{
+            line.isHidden = true
+//            showLoading()
             curCommodity.loopForPrices {
                 [unowned self] in
                 self.handlechangeEvent()
+                
             }
         }
     }
     
-    
+    func animateLineView(){
+//        hideLoading()
+        UIView.transition(with: line, duration: 0.4, options: .transitionCrossDissolve , animations: {
+            self.line.isHidden = false
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -38,6 +55,7 @@ class lineChartController: UIViewController {
         let curChoice = curCommodity.pricesTags[choice.selectedSegmentIndex]
         guard let prices = curCommodity.prices[curChoice] else {return}
         let dispData = prices.getLast(20)
+        animateLineView()
         linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: UIColor.blue)
     }
     

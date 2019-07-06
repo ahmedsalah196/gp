@@ -6,14 +6,13 @@ class Commodity {
             technicalAnalysis.removeAll()
             monteCarlo.removeAll()
             news.removeAll()
-            URLcreator()
+            predictedPrice = -1
         }
     }
-    var macdData: MACDData!
     let commoditiesImages = [
-        "gold": #imageLiteral(resourceName: "gold"),
+        "gold": #imageLiteral(resourceName: "gold") ,
         "corn":#imageLiteral(resourceName: "corn"),
-        "crudeoil": #imageLiteral(resourceName: "oil")
+        "crudeoil": #imageLiteral(resourceName: "petrolbarrel")
     ]
     let commoditiesNames = [
         "gold": "Gold",
@@ -32,29 +31,27 @@ class Commodity {
     }
     static let sharedinstance = Commodity(name: "gold")
     let apiURL = "https://shielded-ravine-75376.herokuapp.com/"
-    var commodityURL: String!
+    var commodityURL: String{
+        get {
+            print("creating")
+            return apiURL + tag + "/"
+        }
+    }
     var prices = [String: Array<Double>] ()
     var pricesTags = ["daily","weekly"]
     var news:[News] = [News]()
     var technicalAnalysis = [String:CommodityTechnicalIndicatores]()
     var technicalAnalysisTags = ["sma","ema","macd","rsi"]
-    var predictedPrice: Int = 30
+    var predictedPrice: Int = -1
     var monteCarlo = [String:Any]()
     let datafetcher: HistPrices
     let group = DispatchGroup()
     init(name:String) {
         self.tag = name
-        datafetcher = HistPrices()
-        URLcreator()
+        datafetcher = HistPrices.sharedInstance
     }
     
-    func URLcreator(){
-        commodityURL = apiURL + tag + "/"
-        print("creating")
-        
-    }
     func loopForPrices(completion: @escaping ()-> Void){
-        print("looping")
         var ret = [String: Array<Double>]()
         let group = DispatchGroup()
         DispatchQueue.concurrentPerform(iterations: pricesTags.count) { (index) in
@@ -72,6 +69,7 @@ class Commodity {
         }
     }
     func loopForTA(completion: @escaping ()-> Void){
+        print("looping: \(commodityURL)")
         var ret = [String: Array<Double>]()
         let group = DispatchGroup()
         DispatchQueue.concurrentPerform(iterations: technicalAnalysisTags.count) { (index) in
@@ -85,11 +83,11 @@ class Commodity {
                 })
             }
             else {
-                datafetcher.getMACD { (MACDData) in
+                datafetcher.getMACD(tag: self.tag, completion: { (MACDData) in
                     ret["macd"] = MACDData.macd
                     ret["Signal"] = MACDData.signal
                     group.leave()
-                }
+                })
             }
         }
         group.notify(queue: DispatchQueue.main) {
@@ -125,16 +123,16 @@ class Commodity {
     func getName() -> String {
         return commoditiesNames[tag]!
     }
-    func getPrice(completion: @escaping (Int)-> Void){
-        datafetcher.getPredictedPrice(tag: tag) { [weak self] (price) in
-            if let price = price,
-                let self = self
-            {
-                self.predictedPrice = price
-                completion(price)
-            }
-        }
-    }
+//    func getPrice(completion: @escaping (Int)-> Void){
+//        datafetcher.getPredictedPrice(tag: tag) { [weak self] (price) in
+//            if let price = price,
+//                let self = self
+//            {
+//                self.predictedPrice = price
+//                completion(price)
+//            }
+//        }
+//    }
     func monteCarlo(days: Int,completion: @escaping ([String:Any])->Void){
         datafetcher.getMonteCarlo(days,tag: tag) {[weak self] (response) in
             if let response = response,

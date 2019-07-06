@@ -1,6 +1,10 @@
 import UIKit
 import Alamofire
 class HistPrices: NSObject {
+    static let sharedInstance = HistPrices()
+    private override init() {
+        
+    }
     let apiURL = "https://shielded-ravine-75376.herokuapp.com/"
     func fetchPrices(from url:String ,completion: @escaping ([Double]?) -> Void){
         guard let requestURL = URL(string: url) else {
@@ -25,19 +29,17 @@ class HistPrices: NSObject {
             completion(value)
         }
     }
-    func getPredictedPrice(tag: String, completion: @escaping (Int?)-> Void){
-        let url = URL(string: #"https://predapi.herokuapp.com/\#(tag)/dailypred"#)
+    func getPrice(urlString: String, completion: @escaping (String)-> Void){
+        let url = URL(string: urlString)
         guard let Url = url else { return }
         Alamofire.request(Url, method: .get)
         .validate()
-            .responseData { (response) in
-                guard let data = response.data, let StringInt = String.init(data: data, encoding: String.Encoding.utf8) else{
-                    completion(nil)
-                    return
-                }
-                let predictedPrice = Int.init(StringInt)
+            .response { (data) in
+                if let data = data.data {
+                    let predictedPrice = String(decoding: data, as: UTF8.self)
                 completion(predictedPrice)
         }
+    }
     }
     func getMonteCarlo(_ days: Int,
                        tag: String,
@@ -58,8 +60,9 @@ class HistPrices: NSObject {
                 completion(result)
         }
     }
-    func getMACD(completion: @escaping (MACDData)->Void){
-        if let MACDUrl = URL(string: "https://shielded-ravine-75376.herokuapp.com/gold/macd"){
+    func getMACD(tag:String, completion: @escaping (MACDData)->Void){
+        if let MACDUrl = URL(string: "https://shielded-ravine-75376.herokuapp.com/\(tag)/macd"){
+            print(MACDUrl.absoluteString)
         Alamofire.request(MACDUrl,method: .get)
             .validate()
             .responseData { (response) in

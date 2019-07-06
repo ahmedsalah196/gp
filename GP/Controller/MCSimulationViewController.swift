@@ -2,9 +2,12 @@ import UIKit
 import Charts
 import SwiftChart
 class MCSimulationViewController: UIViewController {
-//    @IBOutlet weak var line: LineChartView!
     
     @IBOutlet weak var linr: Chart!
+    
+    @IBOutlet weak var VAR: UILabel!
+    var activity: UIActivityIndicatorView?
+
     let areaDrawer = AreaChart()
     var numberOfDaysToSimulate:Int? {
         didSet{
@@ -26,18 +29,49 @@ class MCSimulationViewController: UIViewController {
         }
         curCommodity = tabBarVC.curCommodity
         if curCommodity.monteCarlo.isEmpty{
+            showLoading()
             curCommodity.monteCarlo(days: numberOfDaysToSimulate ?? 20, completion: { [weak self] (response) in
-                if let self = self,
+                
+                guard let self = self,
                     let xs = response["price_array"] as? [Double],
                     let ys = response["fit"] as? [Double]
+                    else
                 {
-                    self.updateGraph(xs: xs, ys: ys)
+                    return
                 }
+//                if let self = self,
+//                    let valueAtRisk = response["var"] as? Double
+//                    {
+//                        self.VAR.text = String("VAR: \(valueAtRisk)")
+//                }
+                self.hideLoading()
+                self.updateGraph(xs: xs, ys: ys)
+                self.linr.isHidden = true
+                self.VAR.isHidden = true
+                self.animateLineView(view: self.linr)
             })
+           
             
             
         }
     }
+    
+    func showLoading(){
+        activity = UIActivityIndicatorView(style: .gray)
+        activity?.frame = view.bounds
+        view.addSubview(activity!)
+        activity?.startAnimating()
+    }
+    func hideLoading(){
+        activity?.removeFromSuperview()
+    }
+    
+    func animateLineView(view : UIView){
+        UIView.transition(with: view, duration: 0.4, options: .transitionCrossDissolve , animations: {
+            view.isHidden = false
+        })
+    }
+    
     func updateGraph(xs xValues:[Double],ys yValues:[Double] ){
         areaDrawer.initializeChart(chart: linr,
                                    prices: xValues,
@@ -49,11 +83,6 @@ class MCSimulationViewController: UIViewController {
         alertView.addTextField { (textfield) in
             textfield.textColor = .blue
             textfield.placeholder = "Days to be simulated"
-            textfield.keyboardType = .numberPad
-        }
-        alertView.addTextField { (textfield) in
-            textfield.textColor = .blue
-            textfield.placeholder = "Number of simulations"
             textfield.keyboardType = .numberPad
         }
         let cancelaction = UIAlertAction(title: "Cancel", style: .cancel)
