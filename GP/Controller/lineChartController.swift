@@ -58,7 +58,7 @@ class lineChartController: UIViewController {
         let dispData = prices.getLast(20)
         hideLoading()
         animateLineView()
-        linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: UIColor.blue, weekly: (daily == 0 ? false : true))
+        linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: themeColor, weekly: (daily == 0 ? false : true))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

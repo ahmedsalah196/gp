@@ -16,10 +16,10 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
             let curchoice = curCommodity.technicalAnalysisTags[selectedIndex]
             let currentData = curCommodity.technicalAnalysis[curchoice]!
             if selectedIndex != 2{
-            linedrawer.updateGraph(line:line, with: currentData.dataArray.getLast(numberOfPointsToBeDrawn), label: technicalIndicators[selectedIndex],color: UIColor.blue,weekly: false)
+            linedrawer.updateGraph(line:line, with: currentData.dataArray.getLast(numberOfPointsToBeDrawn), label: technicalIndicators[selectedIndex],color: themeColor,weekly: false)
             }
             else {
-                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray.getLast(numberOfPointsToBeDrawn),currentData.extraArray!], labels: ["MACD","Signal"], colors: [.blue,.yellow])
+                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray.getLast(numberOfPointsToBeDrawn),currentData.extraArray!.getLast(numberOfPointsToBeDrawn)], labels: ["MACD","Signal"], colors: [themeColor,#colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)])
             }
             btnName.isEnabled = true
             animateLineView(view: line)

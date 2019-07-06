@@ -16,7 +16,7 @@ class SettingsTableViewCell: UITableViewCell {
     
     func setCell(img: UIImage, name: String, rise: UIImage){
         icon.image = img
-        self.name.text = name
+        self.name.text = "$"+name
         riseFall.image = rise
     }
 }

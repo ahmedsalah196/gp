@@ -60,13 +60,12 @@ class lineDrawer: NSObject, IAxisValueFormatter {
             dataset.colors = [colors[i]]
             dataset.circleRadius = 1.0
             dataset.setCircleColor(colors[i])
-            dataset.drawValuesEnabled = false
             return dataset
         }
         let data = LineChartData(dataSets: multisets)
         setupGraph(line: line,
                    label: "MACD",
-                   color: UIColor.blue,
+                   color: themeColor,
                    data: data)
     }
     
@@ -77,9 +76,9 @@ class lineDrawer: NSObject, IAxisValueFormatter {
         line.data = data
         line.chartDescription?.text = label
         line.backgroundColor = UIColor.clear
-        line.chartDescription?.textColor = UIColor.blue
-        line.xAxis.labelTextColor = UIColor.blue
-        line.gridBackgroundColor = UIColor.blue
+        line.chartDescription?.textColor = themeColor
+        line.xAxis.labelTextColor = themeColor
+        line.gridBackgroundColor = themeColor
         line.animate(xAxisDuration: 2, yAxisDuration: 2)
     }
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {

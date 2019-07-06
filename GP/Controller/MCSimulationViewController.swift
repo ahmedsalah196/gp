@@ -39,11 +39,6 @@ class MCSimulationViewController: UIViewController {
                 {
                     return
                 }
-//                if let self = self,
-//                    let valueAtRisk = response["var"] as? Double
-//                    {
-//                        self.VAR.text = String("VAR: \(valueAtRisk)")
-//                }
                 self.hideLoading()
                 self.updateGraph(xs: xs, ys: ys)
                 self.linr.isHidden = true

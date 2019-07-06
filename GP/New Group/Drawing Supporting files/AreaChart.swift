@@ -30,7 +30,7 @@ class AreaChart{
         let series = ChartSeries(data:serieData)
         series.area = true
         // Configure chart layout
-        series.color = ChartColors.maroonColor()
+        series.color = themeColor
         chart.lineWidth = 0.5
         chart.labelFont = UIFont.systemFont(ofSize: 10)
         chart.xLabels = labels

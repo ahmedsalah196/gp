@@ -2,10 +2,10 @@ import UIKit
 struct commodityData {
     let tag:String
     let image:UIImage
-
 }
+
+let themeColor = #colorLiteral(red: 0.2352941176, green: 0.2117647059, blue: 0.431372549, alpha: 1)
 class SettingsViewController: UITableViewController {
-//    let sectionHeaders = ["Commodities","Account"]
     let availableCommodities = [
         commodityData(tag:"gold",image:#imageLiteral(resourceName: "gold") ),
         commodityData(tag:"crudeoil",image:#imageLiteral(resourceName: "petrolbarrel") ),
@@ -20,7 +20,9 @@ class SettingsViewController: UITableViewController {
     let extensions = ["today","dailypred"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.separatorInset = .init(top: 10, left: 10, bottom: 10, right: 10)
+        tableView.separatorColor = .black
+        tableView.sectionHeaderHeight = 60
         tableView.rowHeight = 70
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -34,19 +36,19 @@ class SettingsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = UILabel()
-//        header.text = sectionHeaders[section]
-//        header.textColor = .black
-//        header.backgroundColor = .orange
-//        header.font = UIFont.boldSystemFont(ofSize: 22)
-//        header.textAlignment = .center
-//        return header
-//    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UILabel()
+        header.text = "Commodities"
+        header.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        header.backgroundColor = themeColor
+        header.font = UIFont.systemFont(ofSize: 30)
+        header.textAlignment = .center
+        return header
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SettingsTableViewCell
         let commodity = availableCommodities[indexPath.row]
@@ -64,5 +66,12 @@ class SettingsViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
         }
     }
-
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+        UIView.animate(withDuration: 0.4) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+        }
+    }
 }

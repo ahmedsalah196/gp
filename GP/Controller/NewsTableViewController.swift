@@ -7,6 +7,8 @@ class NewsTableViewController: UITableViewController {
     var newsImages = [Int:UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorInset = .init(top: 10, left: 10, bottom: 10, right: 10)
+        tableView.separatorColor = themeColor
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
         
@@ -99,5 +101,13 @@ class NewsTableViewController: UITableViewController {
             }
         }
         
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+        UIView.animate(withDuration: 0.4) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+        }
     }
 }
