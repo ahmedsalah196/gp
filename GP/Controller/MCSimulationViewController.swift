@@ -5,6 +5,7 @@ class MCSimulationViewController: UIViewController {
     
     @IBOutlet weak var linr: Chart!
     
+    @IBOutlet weak var resimulateBtn: UIButton!
     @IBOutlet weak var VAR: UILabel!
     var activity: UIActivityIndicatorView?
 
@@ -53,12 +54,14 @@ class MCSimulationViewController: UIViewController {
     
     func showLoading(){
         activity = UIActivityIndicatorView(style: .gray)
+        resimulateBtn.isEnabled = false
         activity?.frame = view.bounds
         view.addSubview(activity!)
         activity?.startAnimating()
     }
     func hideLoading(){
         activity?.removeFromSuperview()
+        resimulateBtn.isEnabled = true
     }
     
     func animateLineView(view : UIView){
