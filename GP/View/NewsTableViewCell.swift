@@ -26,19 +26,11 @@ class NewsTableViewCell: UITableViewCell {
         activityIndicator.startAnimating()
         newsImage.image = nil
         newsTitle.text = title
-        newsDescription.textColor = UIColor(red: 0.75,
-                                            green: 0.75,
-                                            blue: 0.75,
+        newsDescription.textColor = UIColor(red: 0.25,
+                                            green: 0.25,
+                                            blue: 0.25,
                                             alpha: 1.0)
         newsDescription.text = description
-//        guard let img = img else {
-////            self.newsImage.image = logo
-//            return
-//        }
-//        NewsFetcher.sharedinstance.getImg(url: img) { [weak self](image) in
-//            guard let image = image, let self = self else {return}
-//            self.newsImage.image = image
-//    }
         }
     func setImage(img: UIImage){
         for view in newsImage.subviews{

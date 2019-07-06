@@ -21,7 +21,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorInset = .init(top: 10, left: 10, bottom: 10, right: 10)
-        tableView.separatorColor = .black
+        tableView.separatorColor = themeColor
         tableView.sectionHeaderHeight = 60
         tableView.rowHeight = 70
     }
