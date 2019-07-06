@@ -10,6 +10,7 @@
 		06721D56C9D724A01AE3B7D3 /* Pods_GPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 393CBB4A7395DA73CA713483 /* Pods_GPUITests.framework */; };
 		49E6B086EB9AD4DE53E22F9F /* Pods_GPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396F4A5AF55817038357BA36 /* Pods_GPTests.framework */; };
 		6F621C7C773A114161BFC193 /* Pods_GP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5D20F6045DAEFE5691B5CD /* Pods_GP.framework */; };
+		7E2808E822D0EA9300820B68 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2808E722D0EA9300820B68 /* SnapshotHelper.swift */; };
 		7E3FA0D022CD196700786E1E /* MACDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3FA0CF22CD196700786E1E /* MACDData.swift */; };
 		7E3FA0D222CE01A500786E1E /* CommodityTechnicalIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */; };
 		7E44670922A17B6600DBDEDF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44670822A17B6600DBDEDF /* SettingsViewController.swift */; };
@@ -61,6 +62,7 @@
 		3B16841BEBCC5BDA8A7FE0EE /* Pods-GPUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPUITests/Pods-GPUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D08604D38D9AEE58DE9AB49 /* Pods-GP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GP/Pods-GP.debug.xcconfig"; sourceTree = "<group>"; };
 		6B5D20F6045DAEFE5691B5CD /* Pods_GP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2808E722D0EA9300820B68 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		7E3FA0CF22CD196700786E1E /* MACDData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACDData.swift; sourceTree = "<group>"; };
 		7E3FA0D122CE01A500786E1E /* CommodityTechnicalIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityTechnicalIndicators.swift; sourceTree = "<group>"; };
 		7E44670822A17B6600DBDEDF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				7E559392229EFEC100E1E1CB /* GPUITests.swift */,
 				7E559394229EFEC100E1E1CB /* Info.plist */,
+				7E2808E722D0EA9300820B68 /* SnapshotHelper.swift */,
 			);
 			path = GPUITests;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E559393229EFEC100E1E1CB /* GPUITests.swift in Sources */,
+				7E2808E822D0EA9300820B68 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

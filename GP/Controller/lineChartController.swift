@@ -33,7 +33,7 @@ class lineChartController: UIViewController {
         commodityTitle.text = curCommodity.getName()
         if curCommodity.prices.isEmpty{
             line.isHidden = true
-//            showLoading()
+            showLoading()
             curCommodity.loopForPrices {
                 [unowned self] in
                 self.handlechangeEvent()
@@ -43,7 +43,7 @@ class lineChartController: UIViewController {
     }
     
     func animateLineView(){
-//        hideLoading()
+        hideLoading()
         UIView.transition(with: line, duration: 0.4, options: .transitionCrossDissolve , animations: {
             self.line.isHidden = false
         })
@@ -52,11 +52,13 @@ class lineChartController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @objc func handlechangeEvent(){
-        let curChoice = curCommodity.pricesTags[choice.selectedSegmentIndex]
+        let daily = choice.selectedSegmentIndex
+        let curChoice = curCommodity.pricesTags[daily]
         guard let prices = curCommodity.prices[curChoice] else {return}
         let dispData = prices.getLast(20)
+        hideLoading()
         animateLineView()
-        linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: UIColor.blue)
+        linedrawer.updateGraph(line:line,with:dispData,label: "Historical Prices", color: UIColor.blue, weekly: (daily == 0 ? false : true))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

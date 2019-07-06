@@ -1,23 +1,47 @@
 import UIKit
 import Charts
-class lineDrawer: NSObject {
+class lineDrawer: NSObject, IAxisValueFormatter {
     static let sharedinstance = lineDrawer()
     private override init() {
         super.init()
     }
+
+    var matchingDates = [String]()
     
-    func updateGraph(line: LineChartView, with numbers: [Double],label: String, color: UIColor){
+    func updateGraph(line: LineChartView, with numbers: [Double],label: String, color: UIColor, weekly: Bool){
+        matchingDates.removeAll()
         let lineChartEntry = (0..<numbers.count).map { (i) -> ChartDataEntry in
             return ChartDataEntry(x: Double(i), y: numbers[i])
         }
         
         let lineDataSet = LineChartDataSet(values: lineChartEntry, label: "Number")
         
+        line.xAxis.valueFormatter = self
+        let today = Date()
+        let startDate = Calendar.current.date(byAdding: (weekly ? .weekOfMonth : .day), value: -1*numbers.count , to: today)!
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd"
+        let components = DateComponents(hour: 0, minute: 0, second: 0)
+        calendar.enumerateDates(startingAfter: startDate, matching: components, matchingPolicy: .nextTime) { (date, strict, stop) in
+            if let date = date {
+                if date <= today {
+                    let weekday1 = calendar.component(Calendar.Component.weekday, from: date)
+                    let todayWeekDay =  calendar.component(Calendar.Component.weekday, from: today)
+                        if weekday1 == todayWeekDay || !weekly{
+                            print(todayWeekDay, weekday1)
+                    matchingDates.append(dateFormatter.string(from: date))
+                        }
+                } else {
+                    stop = true
+                }
+            }
+        }
+        
         lineDataSet.colors = [color]
         lineDataSet.circleRadius = 2.0
         lineDataSet.setCircleColor(UIColor.blue)
-        let data = LineChartData()
-        data.addDataSet(lineDataSet)
+        let data = LineChartData(dataSet: lineDataSet)
         lineDataSet.drawValuesEnabled = true
         setupGraph(line: line,
                    label: label,
@@ -50,20 +74,18 @@ class lineDrawer: NSObject {
                     label: String,
                     color: UIColor,
                     data: LineChartData ){
-        guard let _ = line.data else {
-            line.data = data
-            line.chartDescription?.text = label
-            line.backgroundColor = UIColor.clear
-            line.chartDescription?.textColor = UIColor.blue
-            line.xAxis.labelTextColor = UIColor.blue
-            line.gridBackgroundColor = UIColor.blue
-            line.animate(xAxisDuration: 2, yAxisDuration: 2)
-            return
-        }
         line.data = data
-        line.notifyDataSetChanged()
+        line.chartDescription?.text = label
+        line.backgroundColor = UIColor.clear
+        line.chartDescription?.textColor = UIColor.blue
+        line.xAxis.labelTextColor = UIColor.blue
+        line.gridBackgroundColor = UIColor.blue
         line.animate(xAxisDuration: 2, yAxisDuration: 2)
     }
-    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return matchingDates[Int(value)]
+    }
     
 }
+
+

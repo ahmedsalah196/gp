@@ -61,7 +61,7 @@
                                 <segment title="Weekly"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Syv-I8-dvC">
+                        <barButtonItem key="rightBarButtonItem" title="Commodities" id="Syv-I8-dvC">
                             <connections>
                                 <segue destination="vX9-tN-z9j" kind="show" identifier="settings" id="9oD-GI-GOw"/>
                             </connections>
@@ -130,7 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="qBl-Tu-vmJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="Txn-Yv-Qsm">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="woE-zZ-xNx">
+                        <barButtonItem key="rightBarButtonItem" title="Commodities" id="woE-zZ-xNx">
                             <connections>
                                 <segue destination="vX9-tN-z9j" kind="show" identifier="settings" id="g9m-Q2-N7S"/>
                             </connections>
@@ -145,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="-263.19999999999999" y="1933.5832083958023"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Commodities-->
         <scene sceneID="Imr-j6-Idk">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="vX9-tN-z9j" customClass="SettingsViewController" customModule="GP" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,9 +211,7 @@
                             <outlet property="delegate" destination="vX9-tN-z9j" id="h4h-OP-Njv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WSv-PR-xcz">
-                        <nil key="title"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Commodities" id="WSv-PR-xcz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yi-9D-5hq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLC-hW-y9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721" y="2893"/>
+            <point key="canvasLocation" x="1455" y="2899"/>
         </scene>
         <!--News Table View Controller-->
         <scene sceneID="7hC-y4-7Pw">
@@ -300,7 +298,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Zgc-jF-7UC">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="REv-pT-ZLR">
+                        <barButtonItem key="rightBarButtonItem" title="Commodities" id="REv-pT-ZLR">
                             <connections>
                                 <segue destination="vX9-tN-z9j" kind="show" identifier="settings" id="hah-A9-9pM"/>
                             </connections>
@@ -391,7 +389,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Indicators" image="indicators" selectedImage="indicators" id="MwA-Ha-UOg"/>
                     <navigationItem key="navigationItem" id="Ph3-Np-wPU">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="WUa-LX-hIq">
+                        <barButtonItem key="rightBarButtonItem" title="Commodities" id="WUa-LX-hIq">
                             <connections>
                                 <segue destination="vX9-tN-z9j" kind="show" identifier="settings" id="vMF-g3-eNe"/>
                             </connections>
@@ -512,6 +510,6 @@
         <image name="price" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9oD-GI-GOw"/>
+        <segue reference="vMF-g3-eNe"/>
     </inferredMetricsTieBreakers>
 </document>

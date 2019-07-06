@@ -12,6 +12,7 @@ class NewsTableViewController: UITableViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        hideLoading()
         refreshData()
     }
     func refreshData(){
@@ -20,19 +21,40 @@ class NewsTableViewController: UITableViewController {
         }
         curCommodity = tabBarVC.curCommodity
         if curCommodity.news.isEmpty{
+            self.showLoading()
             curCommodity.getNews { [weak self] in
                 if let self = self{
                     self.newsImages.removeAll()
+                    UIView.animate(withDuration: 0.4) {
                     self.tableView.reloadData()
+                    }
+                    self.hideLoading()
                 }
             }
         }
+    }
+    var activity: UIActivityIndicatorView?
+    func showLoading(){
+        activity = UIActivityIndicatorView(style: .gray)
+        activity?.frame = view.bounds
+        view.addSubview(activity!)
+        activity?.startAnimating()
+    }
+    func hideLoading(){
+        activity?.removeFromSuperview()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return curCommodity.news.count
+    }
+    
+    func getindexPaths(length: Int) -> [IndexPath]{
+        
+        return (0..<length).map { (i) -> IndexPath in
+            IndexPath(row: i, section: 0)
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

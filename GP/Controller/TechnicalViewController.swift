@@ -1,6 +1,6 @@
 import UIKit
 import Charts
-
+let numberOfPointsToBeDrawn = 20
 class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     var curCommodity:Commodity!
@@ -16,11 +16,10 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
             let curchoice = curCommodity.technicalAnalysisTags[selectedIndex]
             let currentData = curCommodity.technicalAnalysis[curchoice]!
             if selectedIndex != 2{
-            linedrawer.updateGraph(line:line, with: currentData.dataArray, label: technicalIndicators[selectedIndex],color: UIColor.blue)
-//                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray], labels: [technicalIndicators[selectedIndex]], colors: [UIColor.blue])
+            linedrawer.updateGraph(line:line, with: currentData.dataArray.getLast(numberOfPointsToBeDrawn), label: technicalIndicators[selectedIndex],color: UIColor.blue,weekly: false)
             }
             else {
-                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray,currentData.extraArray!], labels: ["MACD","Signal"], colors: [.blue,.yellow])
+                linedrawer.updateGraphwithMACD(line: line, sets: [currentData.dataArray.getLast(numberOfPointsToBeDrawn),currentData.extraArray!], labels: ["MACD","Signal"], colors: [.blue,.yellow])
             }
             btnName.isEnabled = true
             animateLineView(view: line)
@@ -82,6 +81,7 @@ class TechnicalViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     private func animate(toggle: Bool){
         UIView.animate(withDuration: 0.3) {
+            self.btnName.isHidden = !toggle
             self.tblview.isHidden = toggle
         }
     }
