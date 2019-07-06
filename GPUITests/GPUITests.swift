@@ -12,10 +12,9 @@ class GPUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        let app = XCUIApplication()
+        setupSnapshot(app)
+        app.launch()
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
@@ -29,8 +28,34 @@ class GPUITests: XCTestCase {
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        sleep(5)
+        snapshot("daily prices")
+        tabBarsQuery.buttons["Simulation"].tap()
+        sleep(5)
+        snapshot("Monte Carlo Simulation")
+        tabBarsQuery.buttons["News"].tap()
+        sleep(6)
+        snapshot("news")
+        tabBarsQuery.buttons["Indicators"].tap()
+        sleep(4)
+        snapshot("simple moving average")
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["Simple moving average"].tap()
+        let label = app.staticTexts["Hello, world!"]
+        let exists = NSPredicate(format: "exists == 1")
+        expectation(for: exists, evaluatedWith: label) { () -> Bool in
+            snapshot("options")
+            return true
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        elementsQuery.tables/*@START_MENU_TOKEN@*/.staticTexts["MACD"]/*[[".cells.staticTexts[\"MACD\"]",".staticTexts[\"MACD\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(6)
+        snapshot("MACD")
+        app.navigationBars["GP.TechnicalView"].buttons["Commodities"].tap()
+        snapshot("commodities")
     }
     
 }

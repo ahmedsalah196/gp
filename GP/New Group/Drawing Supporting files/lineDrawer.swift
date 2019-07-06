@@ -29,7 +29,6 @@ class lineDrawer: NSObject, IAxisValueFormatter {
                     let weekday1 = calendar.component(Calendar.Component.weekday, from: date)
                     let todayWeekDay =  calendar.component(Calendar.Component.weekday, from: today)
                         if weekday1 == todayWeekDay || !weekly{
-                            print(todayWeekDay, weekday1)
                     matchingDates.append(dateFormatter.string(from: date))
                         }
                 } else {

@@ -48,6 +48,16 @@
                ReferencedContainer = "container:GP.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E42375622D104D300487094"
+               BuildableName = "snapshot.xctest"
+               BlueprintName = "snapshot"
+               ReferencedContainer = "container:GP.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
