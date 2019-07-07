@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Line Chart Controller-->
@@ -42,7 +41,6 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KzD-Pa-CbF" firstAttribute="leading" secondItem="y7G-xE-HM6" secondAttribute="leading" constant="8" id="3MU-l3-dHa"/>
                             <constraint firstItem="KzD-Pa-CbF" firstAttribute="centerY" secondItem="l3F-uE-6dM" secondAttribute="centerY" id="CUe-JP-TJ8"/>
@@ -54,7 +52,7 @@
                     <navigationItem key="navigationItem" id="JAs-T3-I7R">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="2LC-HZ-7cN">
-                            <rect key="frame" x="129" y="-4" width="117" height="30"/>
+                            <rect key="frame" x="129" y="-5" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Daily"/>
@@ -87,7 +85,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE4-pW-z0x" customClass="Chart" customModule="SwiftChart">
                                 <rect key="frame" x="16" y="178" width="343" height="311"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TE4-pW-z0x" secondAttribute="height" multiplier="343:311" id="9Pz-bY-YvG"/>
                                     <constraint firstAttribute="width" secondItem="TE4-pW-z0x" secondAttribute="height" multiplier="343:311" id="bzm-Ne-qrf"/>
@@ -110,7 +107,6 @@
                                     <constraint firstAttribute="width" secondItem="kiT-TO-m6T" secondAttribute="height" multiplier="172:41" id="4Qg-4N-wCb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -175,7 +171,6 @@
                                                 <constraint firstAttribute="width" secondItem="HUT-zN-FBb" secondAttribute="height" multiplier="21:10" id="kEl-bL-hHE"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="linkColor"/>
                                             <nil key="highlightedColor"/>
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
@@ -225,7 +220,6 @@
                     <view key="view" contentMode="scaleToFill" id="5h4-Zt-7Kt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="atz-xt-6cp"/>
                     </view>
                 </viewController>
@@ -502,21 +496,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4O-bh-NRD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2132" y="945"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Pqt-gM-xRv">
-            <objects>
-                <viewController id="8Bw-et-Upn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="B2n-Ow-ybz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="hwy-RL-AFy"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aCb-xt-awM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="690" y="2444"/>
         </scene>
     </scenes>
     <resources>
